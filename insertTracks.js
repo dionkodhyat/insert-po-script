@@ -58,8 +58,11 @@ const insert = async () => {
                         if (twitterLink) artist["TwitterHandle"] = twitterLink[0].URL
                         artists.push(artist)
                     }
+                    // Insert all the artist for this track
                     details["Artists"] = artists
                     let detailsJSON = JSON.stringify(details)
+
+                    //Insert to the DB
                     res = pool.query(SQL
                         `
                         INSERT INTO poll_options (title, poll_id, details) VALUES (${poTitle}, ${poll_id}, ${detailsJSON})
